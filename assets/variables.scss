@@ -1,0 +1,16 @@
+
+// Variables you want to modify
+$btn-border-radius: 0px;
+
+// If you need to extend Vuetify SASS lists
+$material-light: ( cards: blue );
+$bg-light: #d8d8d8;
+
+
+
+// Variables
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+
+
+@import '~vuetify/src/styles/styles.sass';
