@@ -25,6 +25,9 @@
             </button>
           </div>
           <div class="card-body">
+            <div v-if="tasks.length <=0" style="color:grey">
+              Empty task list
+            </div>
             <div v-for="(task, index) in tasks" :key="index" cols="12" md="4">
               <Task
                 :task="task"
@@ -36,8 +39,9 @@
             </div>
           </div>
           <div class="card-footer">
-            <v-form @submit.prevent="addTask" class="input-wrap">
-              <input title="task input" type="text" placeholder="New task" v-model="newTask" label="New Task" required></input>
+            <v-form @submit.prevent="addTask" class="input-wrap" style="position: relative;">
+              <input :maxlength="maxCharacters" title="task input" type="text" placeholder="New task" v-model="newTask" label="New Task" required></input>
+              <p v-if="newTask.length >= maxCharacters" class="popup" >Maximum character limit reached!</p>
               <button title="task button" class="hehe" type="submit"><svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg></button>
             </v-form>
           </div>
@@ -52,6 +56,7 @@ export default {
   data() {
     return {
       newTask: "",
+      maxCharacters: 40 // Maximum number of characters
     };
   },
   computed: {

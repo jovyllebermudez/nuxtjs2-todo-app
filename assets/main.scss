@@ -166,9 +166,14 @@
           background-color: red;
         }
 
-
       }
-
       
+  }
+  .popup {
+    color: red;
+    position: absolute; 
+    bottom:-70px ;
+    background-color: white;
+    padding: 1rem;
   }
 }
